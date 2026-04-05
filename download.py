@@ -20,6 +20,7 @@ DATASETS: dict[str, str] = {
         "https://datamap.gov.wales/geoserver/geonode/ows?"
         "service=WFS&version=1.0.0&request=GetFeature"
         "&typeName=geonode:senedd_final_2026&outputFormat=application/json"
+        "&srsName=EPSG:4326"
     ),
     "westminster": (
         "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/"
