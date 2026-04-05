@@ -38,7 +38,7 @@ def get_cached_path(dataset: str, data_dir: Path = DATA_DIR) -> Path:
 def download_boundaries(
     dataset: str,
     data_dir: Path = DATA_DIR,
-) -> dict:
+) -> dict[str, object]:
     """Download boundary GeoJSON, using local cache if available.
 
     Args:
@@ -55,12 +55,12 @@ def download_boundaries(
     cache_path = get_cached_path(dataset, data_dir)
 
     if cache_path.exists():
-        return json.loads(cache_path.read_text())
+        return json.loads(cache_path.read_text(encoding="utf-8"))
 
     data_dir.mkdir(parents=True, exist_ok=True)
     response = requests.get(url, timeout=60)
     response.raise_for_status()
     geojson = response.json()
 
-    cache_path.write_text(json.dumps(geojson))
+    cache_path.write_text(json.dumps(geojson), encoding="utf-8")
     return geojson

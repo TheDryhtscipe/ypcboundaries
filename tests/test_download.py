@@ -1,7 +1,8 @@
 import json
-import os
 from pathlib import Path
 from unittest.mock import patch, MagicMock
+
+import pytest
 
 from download import DATASETS, download_boundaries, get_cached_path
 
@@ -46,6 +47,5 @@ def test_download_fetches_when_no_cache(tmp_path):
 
 
 def test_download_raises_for_unknown_dataset(tmp_path):
-    import pytest
     with pytest.raises(KeyError):
         download_boundaries("nonexistent", data_dir=tmp_path)
