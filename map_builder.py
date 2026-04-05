@@ -33,7 +33,7 @@ def get_name_field(dataset: str) -> str:
     return LAYER_CONFIG[dataset]["name_field"]
 
 
-def build_map(boundary_data: dict[str, dict]) -> folium.Map:
+def build_map(boundary_data: dict[str, dict[str, object]]) -> folium.Map:
     """Build a folium map with all boundary layers.
 
     Args:
@@ -58,7 +58,6 @@ def build_map(boundary_data: dict[str, dict]) -> folium.Map:
 
         folium.GeoJson(
             geojson,
-            name=cfg["label"],
             style_function=lambda feature, c=cfg["colour"]: {
                 "fillColor": c,
                 "color": c,

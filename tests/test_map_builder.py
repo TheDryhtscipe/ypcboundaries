@@ -1,6 +1,3 @@
-import json
-from pathlib import Path
-
 from map_builder import LAYER_CONFIG, build_map, get_name_field
 
 
